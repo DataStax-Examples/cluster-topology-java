@@ -1,45 +1,79 @@
-# datastax-example-template
-A short few sentences describing what is the purpose of the example and what the user will learn
+# Retrieving Cluster Topology in Java
+This demonstrates how to retrieve the cluster topology in Java
 
-e.g.
-This application shows how to use configure your NodeJs application to connect to DDAC/Cassandra/DSE or an Apollo database at runtime.
-
-Contributors: A listing of contributors to this repository linked to their github profile
+Contributors: [Tomasz Lelek](https://github.com/tomekl007) derived from [here](https://github.com/datastax/java-driver/blob/4.x/examples/src/main/java/com/datastax/oss/driver/examples/basic/ReadTopologyAndSchemaMetadata.java)
 
 ## Objectives
-A list of the top objectives that are being demonstrated by this sample
 
-e.g.
-* To demonstrate how to specify at runtime between a standard (DSE/DDAC/C*) client configuration and an Apollo configuration for the same application.
+* Show how to gather a Cassandra cluster's topology and schema
   
 ## Project Layout
-A list of key files within this repo and a short 1-2 sentence description of why they are important to the project
 
-e.g.
-* app.js - The main application file which contains all the logic to switch between the configurations
+* [App.java](/src/main/java/com/datastax/examples/App.java) - The main application file 
 
 ## How this Sample Works
-A description of how this sample works and how it demonstrates the objectives outlined above
+This samples shows how to use the `Metadata` class to retrieve information about:
+
+* Cluster topology such as nodes, racks, and data centers
+* Keyspaces
+* Tables
 
 ## Setup and Running
 
 ### Prerequisites
-The prerequisites required for this application to run
 
-e.g.
-* NodeJs version 8
-* A DSE 6.7 Cluster
-* Schema added to the cluster
+* Java 8
+* An Apache Cassandra(R) cluster is running and accessible through the contacts points identified by basic.contact-points (see application.conf).
 
 ### Running
-The steps and configuration needed to run and build this application
 
-e.g.
+To build this application use the following command:
+
+`mvn clean compile`
+
 To run this application use the following command:
 
-`node app.js`
+`mvn exec:java -Dexec.mainClass="com.datastax.examples.App"`
 
-This will produce the following output:
+This will produce something similar to the following output:
 
-`Connected to cluster with 3 host(s) ["XX.XX.XX.136:9042","XX.XX.XX.137:9042","XX.XX.XX.138:9042"]`
+```
+Data Center: dc1; Host: /127.0.0.1:9042; Rack: rack1
+Keyspace: system_auth; Table: role_members
+Keyspace: system_auth; Table: role_permissions
+Keyspace: system_auth; Table: roles
+Keyspace: system_schema; Table: aggregates
+Keyspace: system_schema; Table: columns
+Keyspace: system_schema; Table: dropped_columns
+Keyspace: system_schema; Table: functions
+Keyspace: system_schema; Table: indexes
+Keyspace: system_schema; Table: keyspaces
+Keyspace: system_schema; Table: tables
+Keyspace: system_schema; Table: triggers
+Keyspace: system_schema; Table: types
+Keyspace: system_schema; Table: views
+Keyspace: examples; Table: videos
+Keyspace: system_distributed; Table: parent_repair_history
+Keyspace: system_distributed; Table: repair_history
+Keyspace: system_distributed; Table: view_build_status
+Keyspace: system; Table: IndexInfo
+Keyspace: system; Table: available_ranges
+Keyspace: system; Table: batches
+Keyspace: system; Table: batchlog
+Keyspace: system; Table: built_views
+Keyspace: system; Table: compaction_history
+Keyspace: system; Table: hints
+Keyspace: system; Table: local
+Keyspace: system; Table: paxos
+Keyspace: system; Table: peer_events
+Keyspace: system; Table: peers
+Keyspace: system; Table: prepared_statements
+Keyspace: system; Table: range_xfers
+Keyspace: system; Table: size_estimates
+Keyspace: system; Table: sstable_activity
+Keyspace: system; Table: transferred_ranges
+Keyspace: system; Table: views_builds_in_progress
+Keyspace: system_traces; Table: events
+Keyspace: system_traces; Table: sessions
+```
 
