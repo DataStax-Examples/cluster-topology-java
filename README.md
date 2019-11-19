@@ -1,17 +1,17 @@
 # Retrieving Cluster Topology in Java
-This demonstrates how to retrieve the cluster topology in Java
+The [DataStax Drivers](https://docs.datastax.com/en/devapp/doc/devapp/aboutDrivers.html) store metadata about the database cluster that they are connected to, this information can be useful in applications and tools. This example shows how to access that metadata to retrieve the cluster topology in Java.
 
-Contributors: [Tomasz Lelek](https://github.com/tomekl007) derived from [here](https://github.com/datastax/java-driver/blob/4.x/examples/src/main/java/com/datastax/oss/driver/examples/basic/ReadTopologyAndSchemaMetadata.java)
+Contributor(s): [Tomasz Lelek](https://github.com/tomekl007) - derived from [here](https://github.com/datastax/java-driver/blob/4.x/examples/src/main/java/com/datastax/oss/driver/examples/basic/ReadTopologyAndSchemaMetadata.java)
 
 ## Objectives
 
-* Show how to gather a Cassandra cluster's topology and schema
+* Show how to gather a Cassandra cluster's topology and schema using driver metadata
   
 ## Project Layout
 
 * [App.java](/src/main/java/com/datastax/examples/App.java) - The main application file 
 
-## How this Sample Works
+## How this Works
 This samples shows how to use the `Metadata` class to retrieve information about:
 
 * Cluster topology such as nodes, racks, and data centers
@@ -23,7 +23,7 @@ This samples shows how to use the `Metadata` class to retrieve information about
 ### Prerequisites
 
 * Java 8
-* An Apache Cassandra(R) cluster is running and accessible through the contacts points identified by basic.contact-points (see application.conf).
+* A Cassandra cluster is running and accessible through the contacts points identified by basic.contact-points (see [application.conf](/src/main/resources/application.conf)).
 
 ### Running
 
